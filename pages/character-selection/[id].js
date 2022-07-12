@@ -58,7 +58,7 @@ const GameMaster = () => {
         setPlayer(playerData)
         setInterval(() => {
           continuouslyUpdate({ gameId: gameData.id })
-        }, 5000)
+        }, 1000)
       }
     }
   }
@@ -72,7 +72,6 @@ const GameMaster = () => {
   }, [router.query])
 
   const selectCharacter = async (characterName) => {
-    console.log('characterName', characterName)
     const { data } = await axios.put(
       `${router.basePath}/api/player/${player.id}`,
       {
@@ -81,14 +80,23 @@ const GameMaster = () => {
     )
   }
 
+  const deselectCharacter = async (characterName) => {
+    const { data } = await axios.put(
+      `${router.basePath}/api/player/${player.id}`,
+      {
+        character: '',
+      }
+    )
+  }
+
   return (
     <Box>
       {player && <h1>Hi, {player.name}. Select a character</h1>}
-      {game && (
+      {game && player && (
         <Box>
           <h1>Players</h1>
-          <h2>Player 1: {game.players[0].name}(Admin)</h2>
-          <h2>Player 2: {game.players[1].name}</h2>
+          <h2>Player 1: {game.players[0].name} -> {game.players[0].character}</h2>
+          <h2>Player 2: {game.players[1].name}-> {game.players[1].character}</h2>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             {characters.map((character) => (
               <Card
@@ -106,10 +114,15 @@ const GameMaster = () => {
                 </CardContent>
 
                 <CardActions>
-                  {character.name === me.character && (
-                    <Button size="small">Desselectionar</Button>
+                  {character.name === me().character && (
+                    <Button
+                      onClick={() => deselectCharacter(character.name)}
+                      size="small"
+                    >
+                      Deselectionar
+                    </Button>
                   )}
-                  {character.name === you.character && (
+                  {character.name === you().character && (
                     <Typography
                       sx={{ fontSize: 14 }}
                       color="text.secondary"
@@ -118,8 +131,8 @@ const GameMaster = () => {
                       This charactarer has been selected
                     </Typography>
                   )}
-                  {character.name !== me.character &&
-                    character.name !== you.character && (
+                  {character.name !== me().character &&
+                    character.name !== you().character && (
                       <Button
                         onClick={() => selectCharacter(character.name)}
                         size="small"

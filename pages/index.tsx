@@ -10,7 +10,10 @@ const Home = () => {
 
   const handleClick = async (e) => {
     e.preventDefault()
-    const { data } = await axios.post(`${router.basePath}/api/player`, { name })
+    const { data } = await axios.post(`${router.basePath}/api/player`, {
+      name,
+      isAdmin: false,
+    })
     localStorage.setItem('playerId', data.id)
     router.push('game')
   }

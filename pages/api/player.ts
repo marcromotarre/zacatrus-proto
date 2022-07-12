@@ -9,7 +9,7 @@ const Player = async (req: any, res: any) => {
     })
   } catch (e) {
     res.status(401)
-    res.json({ e })
+    res.json({ e, name })
     return
   }
   if (game) {

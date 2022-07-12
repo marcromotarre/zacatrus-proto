@@ -21,14 +21,15 @@ model Game {
 }
 
 model Player {
-  id        Int    @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   name      String
   character String
   life      Int
   defenses  Int[]
   Turn      Turn[]
-  Game      Game?  @relation(fields: [gameId], references: [id])
+  Game      Game?   @relation(fields: [gameId], references: [id])
   gameId    Int?
+  isAdmin   Boolean @default(false)
 }
 
 model Results {

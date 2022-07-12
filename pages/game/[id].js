@@ -25,8 +25,14 @@ const Game = () => {
 
   const addPlayerToGame = async ({ game: gameData, player: playerData }) => {
     if (gameData.players.length === 0) {
+      await axios.put(`${router.basePath}/api/player/${playerData.id}`, {
+        isAdmin: true,
+      })
       setIsAdmin(true)
     } else if (gameData.players[0].id === playerData.id) {
+      await axios.put(`${router.basePath}/api/player/${playerData.id}`, {
+        isAdmin: true,
+      })
       setIsAdmin(true)
     }
 
