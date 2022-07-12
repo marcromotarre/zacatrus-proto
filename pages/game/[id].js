@@ -50,8 +50,19 @@ const Game = () => {
   const continuouslyUpdate = async ({ gameId }) => {
     const gameData = await getGame(gameId)
     if (!gameData.error) {
+      if (gameData.status !== 'player-setup') {
+        router.push(`${router.basePath}/character-selection/${game.id}`)
+      }
+
       setGame(gameData)
     }
+  }
+
+  const goToNextScreen = async () => {
+    const { data } = await axios.put(`${router.basePath}/api/game/${game.id}`, {
+      status: 'character-selection',
+    })
+    router.push(`${router.basePath}/character-selection/${game.id}`)
   }
 
   const loadAllGameData = async ({ gameId, playerId }) => {
@@ -106,7 +117,7 @@ const Game = () => {
           {isAdmin && game.players.length === 2 && (
             <Button
               onClick={() => {
-                router.push(`character-selection/${game.id}`)
+                goToNextScreen()
               }}
             >
               Start Game

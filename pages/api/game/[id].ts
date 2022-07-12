@@ -24,7 +24,7 @@ const getGame = async (req: any, res: any) => {
 
 const putGame = async (req: any, res: any) => {
   const { id } = req.query
-  const { players } = req.body
+  const { players, status } = req.body
   let game
 
   try {
@@ -36,6 +36,7 @@ const putGame = async (req: any, res: any) => {
         players: {
           connect: players,
         },
+        status: status,
       },
     })
   } catch (e) {

@@ -6,23 +6,12 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const GameSearch = () => {
-  const [name, setName] = useState('')
+  const [id, setId] = useState('')
   const router = useRouter()
 
   const handleClick = (e) => {
     e.preventDefault()
-    // check if game exist
-
-    // if exist create player
-    // add player to game
-    // redirect to game
-
-
-    if (name === '1') {
-      router.push('game/1')
-    } else if (name === "2") {
-      router.push('game/2')
-    }
+    router.push(`game/${id}`)
   }
 
   return (
@@ -31,14 +20,10 @@ const GameSearch = () => {
         id="standard-basic"
         label="Write Game ID"
         variant="standard"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={id}
+        onChange={(e) => setId(e.target.value)}
       />
-      {name !== '' && (
-        <Link onClick={handleClick} href="/game">
-          GO TO GAME
-        </Link>
-      )}
+      {id !== '' && <Button onClick={handleClick}>GO TO GAME</Button>}
     </Box>
   )
 }
