@@ -1,18 +1,18 @@
-import prisma from "../../lib/prisma"
+import prisma from '../../../lib/prisma'
 
 const createGame = async (req: any, res: any) => {
   let game
   try {
     game = await prisma.game.create({
-      data: {},
+      data: { status: 'player-setup' },
     })
   } catch (e) {
     res.status(401)
-    res.json({ e })
+    res.json({ haah: 'ole', e })
     return
   }
   if (game) {
-    res.json(game)
+    res.json({ ...game, created: true })
   } else {
     res.json({ error: 'game not created' })
   }

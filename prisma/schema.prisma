@@ -17,6 +17,7 @@ model Game {
   updatedAt DateTime @updatedAt
   turns     Turn[]
   players   Player[]
+  status    String
 }
 
 model Player {

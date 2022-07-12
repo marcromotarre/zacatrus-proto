@@ -1,18 +1,20 @@
-import { Button, Link, TextField } from '@mui/material'
-import { Box } from '@mui/system'
-import Head from 'next/head'
-import Image from 'next/image'
+import { Box, Button } from '@mui/material'
+import axios from 'axios'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
 const GameMaster = () => {
-  const handleClick = () => {}
+  const router = useRouter()
+
+  const handleClick = async () => {
+    const { data } = await axios.post(`${router.basePath}/api/game`)
+    if (data.created) {
+      router.push(`game/${data.id}`)
+    }
+  }
 
   return (
     <Box>
-      <Link onClick={handleClick} href="/game">
-        CREATE NEW GAME
-      </Link>
+      <Button onClick={() => handleClick()}>CREATE NEW GAME</Button>
     </Box>
   )
 }

@@ -23,17 +23,18 @@ const getGame = async (req: any, res: any) => {
 }
 
 const putGame = async (req: any, res: any) => {
-  const { id, players } = req.body
+  const { id } = req.query
+  const { players } = req.body
   let game
 
   try {
     game = await prisma.game.update({
       where: {
-        id,
+        id: parseInt(id),
       },
       data: {
         players: {
-          connect: { id: 1 },
+          connect: players,
         },
       },
     })
