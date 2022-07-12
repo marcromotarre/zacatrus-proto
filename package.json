@@ -11,9 +11,11 @@
     "@chakra-ui/layout": "^1.5.1",
     "@chakra-ui/react": "^1.7.2",
     "@dh-react-hooks/use-raf": "^0.9.1",
-    "@emotion/react": "^11.6.0",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.0",
     "@prisma/client": "^3.6.0",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cookie": "^0.4.1",
     "cookies": "^0.8.0",
@@ -27,7 +29,8 @@
     "react-howler": "^5.2.0",
     "react-icons": "^4.3.1",
     "reset-css": "^5.0.1",
-    "swr": "^1.1.1"
+    "swr": "^1.1.1",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
