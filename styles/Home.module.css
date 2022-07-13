@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -113,4 +117,6 @@
     width: 100%;
     flex-direction: column;
   }
+
+  
 }

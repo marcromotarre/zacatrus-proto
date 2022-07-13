@@ -30,9 +30,6 @@ const Game = () => {
       })
       setIsAdmin(true)
     } else if (gameData.players[0].id === playerData.id) {
-      await axios.put(`${router.basePath}/api/player/${playerData.id}`, {
-        isAdmin: true,
-      })
       setIsAdmin(true)
     }
 
