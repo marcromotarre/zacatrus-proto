@@ -1,10 +1,10 @@
-export const nothing = { name: 'nothing', icon: '' }
+export const nothing = { name: 'nothing', icon: 'nothing' }
 
-export const punch = { name: 'punch', icon: '' }
-export const kick = { name: 'kick', icon: '' }
-export const invisibility = { name: 'invisibility', icon: '' }
-export const defense = { name: 'defense', icon: '' }
-export const ironLever = { name: 'ironLever', icon: '' }
+export const punch = { name: 'punch', icon: 'punch' }
+export const kick = { name: 'kick', icon: 'kick' }
+export const invisibility = { name: 'invisibility', icon: 'invisibility' }
+export const defense = { name: 'defense', icon: 'defense' }
+export const ironLever = { name: 'ironLever', icon: 'ironLever' }
 
-export const time = { name: 'time', icon: '' }
-export const backward = { name: 'backward', icon: '' }
+export const time = { name: 'time', icon: 'time' }
+export const backward = { name: 'backward', icon: 'backward' }

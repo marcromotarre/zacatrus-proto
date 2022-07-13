@@ -4,6 +4,7 @@ import BgAvatar from './BgAvatar.js'
 import { useState } from 'react'
 import { style } from '@mui/system'
 import { characters } from '../constants/characters.js'
+import BgAttack from './BgAttack.js'
 
 const BgPlayerInfo = ({ player = {}, reverse = false }) => {
   const character = characters.find(({ name }) => player.character === name)
@@ -54,10 +55,15 @@ const BgPlayerInfo = ({ player = {}, reverse = false }) => {
             justifyContent: 'center',
           }}
         >
-          <Card sx={{ width: '90vw', height: '90vh' }}>
+          <Card sx={{ width: '90vw', height: '90vh', overflowY: 'auto' }}>
             <Card sx={{ padding: 1, margin: 1 }}>
               <Typography>{character.name}</Typography>
             </Card>
+            <Stack direction="column" spacing={2}>
+              {character.attacks.map((attack) => (
+                <BgAttack key={attack.name} attack={attack} />
+              ))}
+            </Stack>
           </Card>
         </Box>
       </Modal>
