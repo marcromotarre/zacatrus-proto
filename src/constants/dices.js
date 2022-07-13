@@ -1,7 +1,9 @@
 import {
   backward,
+  crossbow,
   defense,
   invisibility,
+  invisiblePunch,
   ironLever,
   kick,
   nothing,
@@ -15,7 +17,7 @@ export const invisibleManDice = [
   ironLever,
   invisibility,
   defense,
-  nothing,
+  invisiblePunch,
 ]
 
-export const timeManDice = [punch, kick, ironLever, time, backward, defense]
+export const timeManDice = [punch, kick, crossbow, time, backward, defense]
