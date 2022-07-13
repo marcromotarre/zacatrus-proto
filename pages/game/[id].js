@@ -1,9 +1,20 @@
-import { Button } from '@mui/material'
-import { Box } from '@mui/system'
+import {
+  Alert,
+  Box,
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Snackbar,
+  Typography,
+} from '@mui/material'
 import axios from 'axios'
 import { route } from 'next/dist/server/router'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import BgAvatars from '../../src/components/BgAvatars.js'
+import BgHeader from '../../src/components/BgHeader.js'
 
 const Game = () => {
   const [game, setGame] = useState({})
@@ -65,7 +76,7 @@ const Game = () => {
     const { data } = await axios.put(`${router.basePath}/api/game/${game.id}`, {
       status: 'character-selection',
     })
-    router.push(`${router.basePath}/character-selection/${game.id}`)
+    router.push(`${router.basePath}/character-selection/${data.id}`)
   }
 
   const loadAllGameData = async ({ gameId, playerId }) => {
@@ -73,14 +84,12 @@ const Game = () => {
     if (gameData.error) {
       setError(gameData.error)
     } else {
-      console.log('gameData', gameData)
       setGame(gameData)
       const playerData = await getPlayer(playerId)
       if (playerData.error) {
         setError(playerData.error)
       } else {
         setPlayer(playerData)
-        console.log('playerData', playerData)
         await addPlayerToGame({ game: gameData, player: playerData })
 
         setInterval(() => {
@@ -99,25 +108,78 @@ const Game = () => {
   }, [router.query])
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: '100vw',
+        height: '100vH',
+      }}
+    >
+      <BgHeader player={player} />
+
       {error && <h1>{error}</h1>}
       {!error && (
-        <Box>
-          <h1>Hi, {player.name}. Are You ready for the match</h1>
-          <h1>GAME: </h1>
+        <Box
+          sx={{
+            width: '100%',
+            height: 'calc(100% - 50px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Card sx={{ width: 500 }}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Game {game.id}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <BgAvatars players={game.players} />
+                </Box>
+              </CardContent>
+            </CardActionArea>
+            <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+              {isAdmin && game.players.length === 2 && (
+                <Button
+                  onClick={() => {
+                    goToNextScreen()
+                  }}
+                  size="small"
+                  color="primary"
+                >
+                  Empezar Partida
+                </Button>
+              )}
+              {isAdmin && game.players.length < 2 && (
+                <Alert severity="info">
+                  Esperando a que un segundo jugador se una{' '}
+                </Alert>
+              )}
+              {!isAdmin && game?.players?.length === 2 && (
+                <Alert severity="info">
+                  Esperando a que el Administrador Empieze partida
+                </Alert>
+              )}
+            </CardActions>
+          </Card>
+        </Box>
+      )}
+    </Box>
+  )
+}
 
-          <h2>id: {game?.id}</h2>
-          <h2>createdAt: {game?.createdAt}</h2>
-          {game?.players?.map(({ id, name }, index) => (
-            <h3 key={id}>
-              Player {index + 1}: {name}
-            </h3>
-          ))}
+export default Game
 
-          {isAdmin && game.players.length < 2 && (
-            <h1>Wating Other Player to Join</h1>
-          )}
-          {isAdmin && game.players.length === 2 && (
+/*
+
+ {isAdmin && game.players.length === 2 && (
             <Button
               onClick={() => {
                 goToNextScreen()
@@ -126,11 +188,14 @@ const Game = () => {
               Start Game
             </Button>
           )}
-          {!isAdmin && <h1>Wating Other Player to Start the game</h1>}
-        </Box>
-      )}
-    </Box>
-  )
-}
-
-export default Game
+          {!isAdmin && (
+            <Snackbar
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              open={true}
+            >
+              <Alert severity="info">
+                Wating Other Player to Start the game
+              </Alert>
+            </Snackbar>
+          )}
+*/

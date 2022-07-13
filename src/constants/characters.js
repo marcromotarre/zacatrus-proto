@@ -1,8 +1,8 @@
-import { invisibleManDice } from './dices'
+import { invisibleManDice, timeManDice } from './dices'
 
 const invisibleMan = {
   name: 'El hombre invisible',
-  health: 10,
+  life: 10,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: [{}],
   superAttacks: [],
@@ -18,16 +18,16 @@ const invisibleMan = {
 
 const timeMan = {
   name: 'El hombre del Tiempo',
-  health: 8,
+  life: 8,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: [{}],
   superAttacks: [],
   dices: [
-    invisibleManDice,
-    invisibleManDice,
-    invisibleManDice,
-    invisibleManDice,
-    invisibleManDice,
+    timeManDice,
+    timeManDice,
+    timeManDice,
+    timeManDice,
+    timeManDice,
   ],
 }
 

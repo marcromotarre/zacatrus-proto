@@ -9,6 +9,9 @@ import {
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import BgAvatar from '../../src/components/BgAvatar'
+import BgAvatars from '../../src/components/BgAvatars'
+import BgHeader from '../../src/components/BgHeader'
 import { characters } from '../../src/constants/characters'
 
 const GameMaster = () => {
@@ -81,48 +84,74 @@ const GameMaster = () => {
   }
 
   const deselectCharacter = async (characterName) => {
-    const { data } = await axios.put(
-      `${router.basePath}/api/player/${player.id}`,
-      {
-        character: '',
-      }
+    await axios.put(`${router.basePath}/api/player/${player.id}`, {
+      character: '',
+    })
+  }
+
+  const goToNextScreen = async () => {
+    const myCharacter = characters.find(({ name }) => me().character === name)
+
+    const yourCharacter = characters.find(
+      ({ name }) => you().character === name
     )
+
+    await axios.put(`${router.basePath}/api/player/${me().id}`, {
+      defenses: myCharacter.defenses,
+      life: myCharacter.life,
+    })
+    await axios.put(`${router.basePath}/api/player/${you().id}`, {
+      defenses: yourCharacter.defenses,
+      life: yourCharacter.life,
+    })
+
+    const { data } = await axios.put(`${router.basePath}/api/game/${game.id}`, {
+      status: 'play',
+    })
+    router.push(`${router.basePath}/play/${data.id}`)
   }
 
   return (
-    <Box>
-      {player && <h1>Hi, {player.name}. Select a character</h1>}
+    <Box
+      sx={{
+        width: '100vw',
+        height: '100vH',
+      }}
+    >
+      <BgHeader player={player} />
+      <BgAvatars players={game?.players ? game?.players : []} />
       {game && player && (
-        <Box>
-          <h1>Players</h1>
-          <h2>Player 1: {game.players[0].name} -> {game.players[0].character}</h2>
-          <h2>Player 2: {game.players[1].name}-> {game.players[1].character}</h2>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            {characters.map((character) => (
-              <Card
-                key={character.name}
-                sx={{ width: '200px', marginLeft: '20px' }}
-              >
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {character.name}
-                  </Typography>
-                </CardContent>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          {characters.map((character) => (
+            <Card
+              key={character.name}
+              sx={{ width: '200px', marginLeft: '20px' }}
+            >
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 14 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  {character.name}
+                </Typography>
+              </CardContent>
 
-                <CardActions>
-                  {character.name === me().character && (
+              <CardActions>
+                {character.name === me().character && (
+                  <Box>
+                    <BgAvatar player={player} />
                     <Button
                       onClick={() => deselectCharacter(character.name)}
                       size="small"
                     >
-                      Deselectionar
+                      Deseleccionar
                     </Button>
-                  )}
-                  {character.name === you().character && (
+                  </Box>
+                )}
+                {character.name === you().character && (
+                  <Box>
+                    <BgAvatar player={you()} />
                     <Typography
                       sx={{ fontSize: 14 }}
                       color="text.secondary"
@@ -130,20 +159,29 @@ const GameMaster = () => {
                     >
                       This charactarer has been selected
                     </Typography>
+                  </Box>
+                )}
+                {character.name !== me().character &&
+                  character.name !== you().character && (
+                    <Button
+                      onClick={() => selectCharacter(character.name)}
+                      size="small"
+                    >
+                      Selectionar
+                    </Button>
                   )}
-                  {character.name !== me().character &&
-                    character.name !== you().character && (
-                      <Button
-                        onClick={() => selectCharacter(character.name)}
-                        size="small"
-                      >
-                        Selectionar
-                      </Button>
-                    )}
-                </CardActions>
-              </Card>
-            ))}
-          </Box>
+              </CardActions>
+            </Card>
+          ))}
+          <Button
+            onClick={() => {
+              goToNextScreen()
+            }}
+            size="small"
+            color="primary"
+          >
+            Empezar Partida
+          </Button>
         </Box>
       )}
     </Box>

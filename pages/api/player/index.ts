@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma'
+import prisma from '../../../lib/prisma'
 
 const Player = async (req: any, res: any) => {
   const { name } = req.body
