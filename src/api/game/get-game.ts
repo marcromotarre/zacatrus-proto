@@ -8,7 +8,7 @@ const getGame = async (req: any, res: any) => {
       where: {
         id: parseInt(id, 10),
       },
-      include: { players: true },
+      include: { players: true, turns: true },
     })
   } catch (e) {
     res.status(401)

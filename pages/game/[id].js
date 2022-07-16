@@ -65,7 +65,9 @@ const Game = () => {
     const gameData = await getGame(gameId)
     if (!gameData.error) {
       if (gameData.status !== 'player-setup') {
-        router.push(`${router.basePath}/character-selection/${game.id}`)
+        if (gameData.id) {
+          router.push(`${router.basePath}/character-selection/${gameData.id}`)
+        }
       }
 
       setGame(gameData)
@@ -73,10 +75,10 @@ const Game = () => {
   }
 
   const goToNextScreen = async () => {
-    const { data } = await axios.put(`${router.basePath}/api/game/${game.id}`, {
+    await axios.put(`${router.basePath}/api/game/${game.id}`, {
       status: 'character-selection',
     })
-    router.push(`${router.basePath}/character-selection/${data.id}`)
+    router.push(`${router.basePath}/character-selection/${game.id}`)
   }
 
   const loadAllGameData = async ({ gameId, playerId }) => {

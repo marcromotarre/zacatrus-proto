@@ -22,17 +22,16 @@ model Game {
 
 model Player {
   id        Int     @id @default(autoincrement())
-  name      String
+  username  String
   character String
   life      Int
   defenses  Int[]
-  Turn      Turn[]
   Game      Game?   @relation(fields: [gameId], references: [id])
   gameId    Int?
   isAdmin   Boolean @default(false)
 }
 
-model Results {
+model Result {
   id         Int      @id @default(autoincrement())
   character1 String
   character2 String
@@ -41,13 +40,8 @@ model Results {
 }
 
 model Turn {
-  id           Int      @id @default(autoincrement())
-  activePlayer Player   @relation(fields: [playerId], references: [id])
-  type         String
-  dices        String[]
-  defense      Int
-  Game         Game?    @relation(fields: [gameId], references: [id])
-  gameId       Int?
-  playerId     Int
-  data         String?
+  id          Int     @id @default(autoincrement())
+  Game        Game?   @relation(fields: [gameId], references: [id])
+  gameId      Int?
+  information String?
 }

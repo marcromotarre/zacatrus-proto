@@ -17,9 +17,9 @@ const BgHeader = ({ player = {} }) => {
         backgroundColor: '#FCFCFC',
       }}
     >
-      {player?.name ? (
+      {player?.username ? (
        <Stack direction="row" spacing={2}>
-          <Typography>Hi, {player?.name}</Typography>
+          <Typography>Hi, {player?.username}</Typography>
           <BgAvatar player={player} />
         </Stack>
       ) : (

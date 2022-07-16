@@ -12,6 +12,7 @@ import {
 
 const invisibleMan = {
   name: 'El hombre invisible',
+  image: 'invisible-man.jpg',
   life: 10,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: [
@@ -189,7 +190,8 @@ const invisibleMan = {
 }
 
 const timeMan = {
-  name: 'El hombre del Tiempo',
+  name: 'La Mujer del Tiempo',
+  image: 'time-man.jpg',
   life: 8,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: [

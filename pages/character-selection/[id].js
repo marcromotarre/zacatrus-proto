@@ -13,6 +13,7 @@ import BgAvatar from '../../src/components/BgAvatar'
 import BgAvatars from '../../src/components/BgAvatars'
 import BgHeader from '../../src/components/BgHeader'
 import { characters } from '../../src/constants/characters'
+import { getTurnData, TURN_TYPES } from '../../src/data/turns'
 
 const GameMaster = () => {
   const router = useRouter()
@@ -35,8 +36,8 @@ const GameMaster = () => {
   const continuouslyUpdate = async ({ gameId }) => {
     const gameData = await getGame(gameId)
     if (!gameData.error) {
-      if (gameData.status !== 'character-selection') {
-        // router.push(`${router.basePath}/game/${game.id}`)
+      if (gameData.status !== 'character-selection' && game?.id) {
+        router.push(`${router.basePath}/${gameData.status}/${game.id}`)
       }
 
       setGame(gameData)
@@ -105,12 +106,31 @@ const GameMaster = () => {
       life: yourCharacter.life,
     })
 
-    const { data } = await axios.put(`${router.basePath}/api/game/${game.id}`, {
+    console.log(
+      'turnData',
+      getTurnData({
+        type: TURN_TYPES.GAME_START,
+        attacker: myCharacter,
+        defender: yourCharacter,
+      })
+    )
+
+    await axios.post(`${router.basePath}/api/turn`, {
+      information: JSON.stringify(
+        getTurnData({
+          type: TURN_TYPES.GAME_START,
+          attacker: { ...myCharacter, ...me() },
+          defender: { ...yourCharacter, ...you() },
+        })
+      ),
+      gameId: game.id,
+    })
+
+    await axios.put(`${router.basePath}/api/game/${game.id}`, {
       status: 'play',
     })
-    router.push(`${router.basePath}/play/${data.id}`)
+    router.push(`${router.basePath}/play/${game.id}`)
   }
-
   return (
     <Box
       sx={{
@@ -173,15 +193,17 @@ const GameMaster = () => {
               </CardActions>
             </Card>
           ))}
-          <Button
-            onClick={() => {
-              goToNextScreen()
-            }}
-            size="small"
-            color="primary"
-          >
-            Empezar Partida
-          </Button>
+          {me().isAdmin && me().character !== '' && you().character !== '' && (
+            <Button
+              onClick={() => {
+                goToNextScreen()
+              }}
+              size="small"
+              color="primary"
+            >
+              Empezar Partida
+            </Button>
+          )}
         </Box>
       )}
     </Box>

@@ -1,6 +1,5 @@
 import { Avatar, Box } from '@mui/material'
 
-
 const BgAvatar = ({ player }) => {
   function stringToColor(string) {
     let hash = 0
@@ -27,15 +26,14 @@ const BgAvatar = ({ player }) => {
       sx: {
         bgcolor: stringToColor(name),
       },
-      children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+      children:
+        name.split(' ').length < 2
+          ? `${name.split(' ')[0][0]}`
+          : `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
     }
   }
 
-  return (
-    <Box>
-      <Avatar {...stringAvatar(player?.name)} />{' '}
-    </Box>
-  )
+  return <Box>{player && <Avatar {...stringAvatar(player?.username)} />}</Box>
 }
 
 export default BgAvatar

@@ -36,7 +36,7 @@ const BgAttackCombination = ({ attack }) => {
 
 const BgAttack = ({ attack }) => {
   return (
-    <Card sx={{ width: 'fit-content', padding: 1 }}>
+    <Card sx={{ width: '90%', padding: 1 }}>
       <Typography variant="h6">{attack.name}</Typography>
       {attack.description && (
         <Typography variant="span">{attack.description}</Typography>
