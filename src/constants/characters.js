@@ -1,19 +1,10 @@
 import { invisibleManDice, timeManDice } from './dices.js'
-import {
-  crossbow,
-  invisibility,
-  invisiblePunch,
-  ironLever,
-  kick,
-  nothing,
-  punch,
-  time,
-} from './faces.js'
+import { invisiblePunch, ironLever, kick, punch } from './faces.js'
 
 const invisibleMan = {
   name: 'MAURICE JACOB',
   superhero: 'OBSCURIO',
-  banner: '',
+  banner: 'invisible-banner.png',
   image: 'invisible-man-painted-character.png',
   life: 10,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],

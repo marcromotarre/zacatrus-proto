@@ -50,12 +50,16 @@ const Character = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              height: '200px',
+              width: '100%',
+              position: 'relative',
             }}
           >
             <Image
-              width="200"
-              height="200"
-              src={`/images/${character.image}`}
+              height="200px"
+              layout="fill"
+              objectFit="contain"
+              src={`/images/${character.banner}`}
             />
           </Box>
           <Typography
@@ -80,19 +84,25 @@ const Character = () => {
               sx={{ width: '100%' }}
             >
               {Object.keys(character.attacks).map((type) => (
-                <Button
+                <Box
                   sx={
                     attackType === type
                       ? {
-                          border: '1px solid black',
+                          padding: 2,
+                          borderRadius: 2,
                           fontFamily: 'Comic Book',
+                          backgroundColor: '#1976d2',
+                          color: 'white',
                         }
-                      : { fontFamily: 'Comic Book' }
+                      : {
+                          fontFamily: 'Comic Book',
+                          color: '#1976d2',
+                        }
                   }
                   onClick={() => setAttackType(type)}
                 >
                   {type}
-                </Button>
+                </Box>
               ))}
             </Stack>
             <Box display="flex" justifyContent="center">
