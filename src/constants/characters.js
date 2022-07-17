@@ -11,11 +11,65 @@ import {
 } from './faces.js'
 
 const invisibleMan = {
-  name: 'El hombre invisible',
-  image: 'invisible-man.jpg',
+  name: 'MAURICE JACOB',
+  superhero: 'OBSCURIO',
+  banner: '',
+  image: 'invisible-man-painted-character.png',
   life: 10,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
-  attacks: [
+  attacks: {
+    basic: [
+      {
+        name: 'PUÑETAZO',
+        description: 'Toma revés',
+        dices: [
+          { face: punch },
+          { face: punch, damage: '1' },
+          { face: punch },
+          { face: punch, damage: '2' },
+          { face: punch, damage: '3' },
+        ],
+      },
+      {
+        name: 'GOLPE SORPRESA',
+        description: '¡Si no me ves, no puedes pararme!',
+        dices: [
+          { face: invisiblePunch },
+          { face: invisiblePunch, damage: '1' },
+          { face: invisiblePunch },
+          { face: invisiblePunch, damage: '2' },
+          { face: invisiblePunch, damage: '3' },
+        ],
+      },
+      {
+        name: 'KICK',
+        description: 'Toma revés',
+        dices: [
+          { face: kick },
+          { face: kick, damage: '2' },
+          { face: kick, damage: '3' },
+          { face: kick, damage: '4' },
+          { face: kick, damage: '5' },
+        ],
+      },
+      {
+        name: '¡TOMA HIERRO!',
+        description:
+          'Aunque no me veas si escuchas el sonido del metal, estoy ahí',
+        dices: [
+          { face: ironLever },
+          { face: ironLever },
+          { face: ironLever, damage: '3' },
+          { face: ironLever, damage: '5' },
+          { face: ironLever, damage: '7' },
+        ],
+      },
+    ],
+    combo: [],
+    special: [],
+    fatalities: [],
+  },
+  /*attacks: [
     {
       name: 'GOLPE SORPRESA',
       type: 'incremental',
@@ -136,6 +190,9 @@ const invisibleMan = {
     {
       name: 'MAXIMO PODER',
       type: 'combination',
+
+    
+
       attacks: [
         {
           description: 'Gasta 10 puntos al rival',
@@ -175,10 +232,8 @@ const invisibleMan = {
           power: () => {},
         },
       ],
-
-      combination: [ironLever],
     },
-  ],
+  ],*/
   superAttacks: [],
   dices: [
     invisibleManDice,
@@ -191,10 +246,10 @@ const invisibleMan = {
 
 const timeMan = {
   name: 'La Mujer del Tiempo',
-  image: 'time-man.jpg',
+  image: 'time-woman.jpg',
   life: 8,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
-  attacks: [
+  /*attacks: [
     {
       name: 'PUÑO',
       type: 'incremental',
@@ -276,9 +331,25 @@ const timeMan = {
         },
       ],
     },
-  ],
+  ],*/
   superAttacks: [],
   dices: [timeManDice, timeManDice, timeManDice, timeManDice, timeManDice],
 }
 
-export const characters = [invisibleMan, timeMan]
+const speedWoman = {
+  name: 'Speed Woman',
+  image: 'speed-woman-painted-character.png',
+  life: 8,
+  defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
+  dices: [timeManDice, timeManDice, timeManDice, timeManDice, timeManDice],
+}
+
+const metallicMan = {
+  name: 'El Hombre metalico',
+  image: 'metallic-man.jpg',
+  life: 8,
+  defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
+  dices: [timeManDice, timeManDice, timeManDice, timeManDice, timeManDice],
+}
+
+export const characters = [invisibleMan, timeMan, speedWoman, metallicMan]

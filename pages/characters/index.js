@@ -8,16 +8,31 @@ const GameMaster = () => {
   const router = useRouter()
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box
+      sx={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Box sx={{ width: '100%', height: '50px' }} />
-      <Stack
-        direction="row"
-        spacing={3}
-        justifyContent="center"
-        alignItems="center"
+      <Box
+        sx={{
+          paddingLeft: 2,
+          paddingRight: 2,
+          display: 'grid',
+          gridTemplateColumns: 'auto auto',
+          width: '100%',
+          alignSelf: 'center',
+          rowGap: 2,
+          columnGap: 2,
+          justifyItems: 'center',
+        }}
       >
         {characters.map((character, index) => (
-          <Card sx={{ width: '40%' }}>
+          <Card sx={{ width: '100%' }}>
             <Image
               onClick={() => {
                 router.push(`characters/${index}`)
@@ -28,7 +43,7 @@ const GameMaster = () => {
             />
           </Card>
         ))}
-      </Stack>
+      </Box>
     </Box>
   )
 }

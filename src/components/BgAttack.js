@@ -34,16 +34,48 @@ const BgAttackCombination = ({ attack }) => {
   )
 }
 
+const BgAttackDefault = ({ attack }) => {
+  return (
+    <Box>
+      <Box sx={{ marginTop: 2, position: 'relative', width: '100%' }}>
+        <Box sx={{ width: '100%' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '16% 16% 16% 16% 16%',
+              justifyItems: 'center',
+              alignItems: 'center',
+              columnGap: '4%',
+            }}
+          >
+            {attack.dices.map(({ face, damage }) => (
+              <BgDice face={face} damage={damage} />
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
 const BgAttack = ({ attack }) => {
   return (
-    <Card sx={{ width: '90%', padding: 1 }}>
-      <Typography variant="h6">{attack.name}</Typography>
+    <Box sx={{ width: '100%' }}>
+      <Typography sx={{ fontFamily: 'Comication' }} variant="h4">
+        {attack.name}
+      </Typography>
       {attack.description && (
-        <Typography variant="span">{attack.description}</Typography>
+        <Typography
+          sx={{ fontFamily: 'Comic Book', fontSize: '14px' }}
+          variant="span"
+        >
+          {attack.description}
+        </Typography>
       )}
+      {!attack.type && <BgAttackDefault attack={attack} />}
       {attack.type === 'incremental' && <BgAttackIncremental attack={attack} />}
       {attack.type === 'combination' && <BgAttackCombination attack={attack} />}
-    </Card>
+    </Box>
   )
 }
 
