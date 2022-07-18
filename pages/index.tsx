@@ -1,9 +1,17 @@
-import { Button, TextField } from '@mui/material'
-import { Box } from '@mui/system'
+import {
+  Box,
+  Button,
+  createTheme,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from '@mui/material'
 import axios from 'axios'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+
+
 import styles from '../styles/Home.module.css'
 
 const Home = () => {
@@ -25,7 +33,6 @@ const Home = () => {
       {/* use head and add meta tag in head component  */}
       <Head>
         <title>Home App</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
       </Head>
       {/* use layout and add other ui component  */}
       <Box
@@ -44,7 +51,9 @@ const Home = () => {
             rowGap: '10px',
           }}
         >
-          <h1>The Last Hero</h1>
+          <Typography sx={{ fontFamily: "Comication" }}>
+            The Last Hero
+          </Typography>
           <TextField
             label="Write your username"
             id="outlined-start-adornment"
@@ -56,7 +65,11 @@ const Home = () => {
           <Button
             disabled={name === ''}
             variant="contained"
-            sx={{ width: '230px', backgroundColor: '#196DF3', color: 'white' }}
+            sx={{
+              width: '230px',
+              backgroundColor: '#196DF3',
+              color: 'white',
+            }}
             onClick={handleClick}
           >
             Go

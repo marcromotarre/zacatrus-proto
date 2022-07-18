@@ -21,6 +21,7 @@
     "cookie": "^0.4.1",
     "cookies": "^0.8.0",
     "easy-peasy": "^5.0.4",
+    "file-loader": "^6.2.0",
     "format-duration": "^1.4.0",
     "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",

@@ -12,4 +12,6 @@ module.exports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  test: /\.(ttf|eot|png)$/,
+  loader: 'file-loader',
 }

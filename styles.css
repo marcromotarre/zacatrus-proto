@@ -25,6 +25,12 @@ a {
   box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Comication";
+    src: url("/fonts/Comication.ttf");
+    font-weight: 100;
+  }
+  
 
 /* Fix Input Zoom on iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus, iPhone 8, iPhone X, XS, XS Max  */
 @media screen and (device-aspect-ratio: 9/16) {

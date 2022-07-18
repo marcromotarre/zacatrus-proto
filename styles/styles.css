@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Comication';
+  src: url('../fonts/Comication.ttf');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Comic Book';
+  src: url('../fonts/comic_book/Comic_Book.otf');
+  font-weight: 100;
+}
+
