@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react'
 import BgAvatar from '../../src/components/BgAvatar'
 import BgAvatars from '../../src/components/BgAvatars'
 import BgHeader from '../../src/components/BgHeader'
-import { characters } from '../../src/constants/characters'
+import { characters } from '../../src/constants/characters/characters.js'
 import { getTurnData, TURN_TYPES } from '../../src/data/turns'
 
 const GameMaster = () => {

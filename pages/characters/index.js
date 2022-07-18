@@ -2,7 +2,7 @@ import { Box, Button, Card, Stack } from '@mui/material'
 import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { characters } from '../../src/constants/characters'
+import { characters } from '../../src/constants/characters/characters.js'
 
 const GameMaster = () => {
   const router = useRouter()

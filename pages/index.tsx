@@ -11,7 +11,6 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-
 const Home = () => {
   const [name, setName] = useState('')
   const router = useRouter()
@@ -25,6 +24,16 @@ const Home = () => {
     localStorage.setItem('playerId', data.id)
     router.push('game')
   }
+
+  const actions = [
+    {
+      name: 'PERSONAJES',
+      onClick: () => {
+        router.push('characters')
+      },
+    },
+    { name: 'CREAR PARTIDA', onClick: () => {} },
+  ]
 
   return (
     <>
@@ -49,7 +58,21 @@ const Home = () => {
             rowGap: '10px',
           }}
         >
-          <Typography sx={{ fontFamily: "Comication" }}>
+          {actions.map((action) => (
+            <Box
+              sx={{
+                padding: 2,
+                borderRadius: 2,
+                fontFamily: 'Comic Book',
+                backgroundColor: '#1976d2',
+                color: 'white',
+              }}
+              onClick={action.onClick}
+            >
+              {action.name}
+            </Box>
+          ))}
+          <Typography sx={{ fontFamily: 'Comication' }}>
             The Last Hero
           </Typography>
           <TextField

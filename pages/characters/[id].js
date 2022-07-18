@@ -2,8 +2,8 @@ import { Box, Button, Card, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import BgAttack from '../../src/components/BgAttack'
-import { characters } from '../../src/constants/characters'
+import BgAttack from '../../src/components/BgAttack.js'
+import { characters } from '../../src/constants/characters/characters.js'
 
 const Character = () => {
   const router = useRouter()
@@ -97,6 +97,7 @@ const Character = () => {
                       : {
                           fontFamily: 'Comic Book',
                           color: '#1976d2',
+                          
                         }
                   }
                   onClick={() => setAttackType(type)}

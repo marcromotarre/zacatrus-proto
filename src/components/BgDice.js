@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React from 'react'
 
 const BgDice = ({ face, damage }) => {
-  const lazyRoot = React.useRef(null)
   return (
     <Box
       sx={{
@@ -24,14 +23,15 @@ const BgDice = ({ face, damage }) => {
           height: '100%',
         }}
       >
-        <Image
-          sx={{ position: 'relative' }}
-          lazyRoot={lazyRoot}
-          src={`/icons/${face.icon}.png`}
-          alt=""
-          layout="fill"
-          objectFit="contain"
-        />
+        <Box sx={{ postion: 'relative' }}>
+          <Image
+            sx={{ position: 'relative' }}
+            src={`/icons/${face.icon}.png`}
+            alt=""
+            layout="fill"
+            objectFit="contain"
+          />
+        </Box>
       </Card>
       {damage && (
         <Box
@@ -44,25 +44,22 @@ const BgDice = ({ face, damage }) => {
             height: '75%',
           }}
         >
-          <Image
-            lazyRoot={lazyRoot}
-            src="/icons/hit.png"
-            layout="fill"
-            objectFit="contain"
-          />
-          <Typography
-            sx={{
-              zIndex: '3',
-              position: 'absolute',
-              color: 'white',
-              left: 'calc(0px + 44%)',
-              top: 'calc(0px + 13%)',
-              fontFamily: 'Comication',
-              fontSize: '6vw',
-            }}
-          >
-            {damage}
-          </Typography>
+          <Box sx={{ postion: 'relative' }}>
+            <Image src="/icons/hit.png" layout="fill" objectFit="contain" />
+            <Typography
+              sx={{
+                zIndex: '3',
+                position: 'absolute',
+                color: 'white',
+                left: 'calc(0px + 44%)',
+                top: 'calc(0px + 13%)',
+                fontFamily: 'Comication',
+                fontSize: '6vw',
+              }}
+            >
+              {damage}
+            </Typography>
+          </Box>
         </Box>
       )}
     </Box>

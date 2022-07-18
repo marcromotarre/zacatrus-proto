@@ -3,8 +3,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import BgAvatar from './BgAvatar.js'
 import { useState } from 'react'
 import { style } from '@mui/system'
-import { characters } from '../constants/characters.js'
 import BgAttack from './BgAttack.js'
+import { characters } from '../constants/characters/characters.js'
 
 const BgPlayerInfo = ({ player = {}, reverse = false }) => {
   const character = characters.find(({ name }) => player.character === name)

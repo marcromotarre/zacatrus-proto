@@ -61,9 +61,27 @@ const BgAttackDefault = ({ attack }) => {
 const BgAttack = ({ attack }) => {
   return (
     <Box sx={{ width: '100%' }}>
-      <Typography sx={{ fontFamily: 'Comication' }} variant="h4">
-        {attack.name}
-      </Typography>
+      <Stack
+        direction="row"
+        spacing={2}
+        justifyContent="start"
+        alignItems="center"
+      >
+        <Typography sx={{ fontFamily: 'Comication' }} variant="h4">
+          {attack.name}
+        </Typography>
+        {attack.titleIcon && (
+          <Box>
+            <Image
+              src={`/icons/${attack.titleIcon}`}
+              width={30}
+              height={30}
+              objectFit="contain"
+            />
+          </Box>
+        )}
+      </Stack>
+
       {attack.description && (
         <Typography
           sx={{ fontFamily: 'Comic Book', fontSize: '14px' }}
