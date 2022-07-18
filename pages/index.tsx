@@ -12,8 +12,6 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 
-import styles from '../styles/Home.module.css'
-
 const Home = () => {
   const [name, setName] = useState('')
   const router = useRouter()
