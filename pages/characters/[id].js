@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import BgAttack from '../../src/components/BgAttack.js'
+import BgDice from '../../src/components/BgDice.js'
 import { characters } from '../../src/constants/characters/characters.js'
 
 const Character = () => {
@@ -45,12 +46,12 @@ const Character = () => {
               {character.superhero}
             </Typography>
           </Box>
-          <Box
+          <Card
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '200px',
+              height: '120px',
               width: '100%',
               position: 'relative',
             }}
@@ -61,6 +62,25 @@ const Character = () => {
               objectFit="contain"
               src={`/images/${character.banner}`}
             />
+          </Card>
+          <Box
+            sx={{
+              width: '90%',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'auto auto auto auto auto auto',
+                justifyItems: 'center',
+                alignItems: 'center',
+                columnGap: '4%',
+              }}
+            >
+              {character.faces.map((face) => (
+                <BgDice face={face} />
+              ))}
+            </Box>
           </Box>
           <Typography
             sx={{ padding: 2, textAlign: 'center', fontFamily: 'Comic Book' }}
@@ -97,7 +117,6 @@ const Character = () => {
                       : {
                           fontFamily: 'Comic Book',
                           color: '#1976d2',
-                          
                         }
                   }
                   onClick={() => setAttackType(type)}

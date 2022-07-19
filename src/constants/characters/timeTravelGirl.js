@@ -1,5 +1,5 @@
 import { timeManDice } from '../dices'
-import { backward, crossbow, kick, punch, time } from '../faces'
+import { backward, crossbow, defense, kick, punch, time } from '../faces'
 
 const timeTravelGirl = {
   name: 'La Mujer del Tiempo',
@@ -168,10 +168,10 @@ const timeTravelGirl = {
         dices: [{ face: time }, { face: time }, { face: time }, { face: time }],
       },
     ],
-    fatalities: [
+    super: [
       {
-        name: 'FATALITY #1',
-        description: 'FATALITY #1 descripción',
+        name: 'SUPER #1',
+        description: 'SUPER #1 descripción',
         dices: [
           { face: punch },
           { face: punch },
@@ -181,8 +181,8 @@ const timeTravelGirl = {
         ],
       },
       {
-        name: 'FATALITY #2',
-        description: 'FATALITY #2 descripción',
+        name: 'SUPER #2',
+        description: 'SUPER #2 descripción',
         dices: [
           { face: kick },
           { face: kick },
@@ -192,14 +192,25 @@ const timeTravelGirl = {
         ],
       },
       {
-        name: 'FATALITY #3',
-        description: 'FATALITY #3 descripción',
+        name: 'SUPER #3',
+        description: 'SUPER #3 descripción',
         dices: [
           { face: crossbow },
           { face: crossbow },
           { face: crossbow },
           { face: crossbow },
           { face: crossbow, damage: '9' },
+        ],
+      },
+      {
+        name: 'SUPER #4',
+        description: 'Restaura todas tus defensas',
+        dices: [
+          { face: defense },
+          { face: defense },
+          { face: defense },
+          { face: defense },
+          { face: defense },
         ],
       },
     ],

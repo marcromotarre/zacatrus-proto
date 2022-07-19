@@ -1,5 +1,6 @@
 import { invisibleManDice } from '../dices.js'
 import {
+  defense,
   invisibility,
   invisiblePunch,
   ironLever,
@@ -13,6 +14,7 @@ const invisibleMan = {
   banner: 'invisible-banner.png',
   image: 'invisible-man-painted-character.png',
   life: 10,
+  faces: [punch, kick, ironLever, invisiblePunch, invisibility, defense],
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: {
     basic: [
@@ -203,10 +205,10 @@ const invisibleMan = {
         ],
       },
     ],
-    fatalities: [
+    super: [
       {
-        name: 'FATALITY #1',
-        description: 'FATALITY #1 descripción',
+        name: 'SUPER #1',
+        description: 'SUPER #1 descripción',
         dices: [
           { face: punch },
           { face: punch },
@@ -216,8 +218,8 @@ const invisibleMan = {
         ],
       },
       {
-        name: 'FATALITY #2',
-        description: 'FATALITY #2 descripción',
+        name: 'SUPER #2',
+        description: 'SUPER #2 descripción',
         dices: [
           { face: kick },
           { face: kick },
@@ -227,14 +229,36 @@ const invisibleMan = {
         ],
       },
       {
-        name: 'FATALITY #3',
-        description: 'FATALITY #3 descripción',
+        name: 'SUPER #3',
+        description: 'SUPER #3 descripción',
         dices: [
           { face: ironLever },
           { face: ironLever },
           { face: ironLever },
           { face: ironLever },
           { face: ironLever, damage: '9' },
+        ],
+      },
+      {
+        name: 'SUPER #4',
+        description: 'Haz dos ataques seguidos siendo invisible',
+        dices: [
+          { face: invisibility },
+          { face: invisibility },
+          { face: invisibility },
+          { face: invisibility },
+          { face: invisibility },
+        ],
+      },
+      {
+        name: 'SUPER #5',
+        description: 'Restaura todas tus defensas',
+        dices: [
+          { face: defense },
+          { face: defense },
+          { face: defense },
+          { face: defense },
+          { face: defense },
         ],
       },
     ],
