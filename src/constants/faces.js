@@ -10,3 +10,9 @@ export const ironLever = { name: 'ironLever', icon: 'ironLever' }
 export const time = { name: 'time', icon: 'time' }
 export const backward = { name: 'backward', icon: 'backward' }
 export const crossbow = { name: 'crossbow', icon: 'crossbow' }
+
+export const eyeRay = { name: 'eyeRay', icon: 'eye-ray' }
+export const punoAmericano = { name: 'punoAmericano', icon: 'puno-americano' }
+export const errorSystem = { name: 'errorSystem', icon: 'error-system' }
+export const doubleDefense = { name: 'doubleDefense', icon: 'double-defense' }
+export const superSpeed = { name: 'suprSpeed', icon: 'super-speed' }

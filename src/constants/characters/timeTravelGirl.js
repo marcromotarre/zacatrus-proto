@@ -2,7 +2,9 @@ import { timeManDice } from '../dices'
 import { backward, crossbow, defense, kick, punch, time } from '../faces'
 
 const timeTravelGirl = {
-  name: 'La Mujer del Tiempo',
+  name: 'BLA BLA',
+  superhero: 'SUPERHERO NAME',
+  banner: 'time-woman.jpg',
   image: 'time-woman.jpg',
   life: 8,
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
