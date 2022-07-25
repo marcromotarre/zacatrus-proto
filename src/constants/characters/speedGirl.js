@@ -16,6 +16,7 @@ const speedGirl = {
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   faces: [punch, kick, punoAmericano, superSpeed, nothing, defense],
   dices: [],
+  attacks: { basic: [], combo: [] },
 }
 
 export default speedGirl

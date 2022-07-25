@@ -16,6 +16,7 @@ const metallicMan = {
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   dices: [],
   faces: [punch, kick, eyeRay, defense, doubleDefense, errorSystem],
+  attacks: { basic: [] },
 }
 
 export default metallicMan

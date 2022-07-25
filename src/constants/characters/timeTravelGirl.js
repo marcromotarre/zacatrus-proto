@@ -1,5 +1,5 @@
-import { timeManDice } from '../dices'
-import { backward, crossbow, defense, kick, punch, time } from '../faces'
+import { timeManDice } from '../dices.js'
+import { backward, crossbow, defense, kick, punch, time } from '../faces.js'
 
 const timeTravelGirl = {
   name: 'BLA BLA',
@@ -7,6 +7,7 @@ const timeTravelGirl = {
   banner: 'time-woman.jpg',
   image: 'time-woman.jpg',
   life: 8,
+  faces: [punch, kick, crossbow, time, backward, defense],
   defenses: [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4],
   attacks: {
     basic: [
@@ -120,15 +121,14 @@ const timeTravelGirl = {
         name: 'AHORA NO ME VES',
         description: '',
         dices: [
-          { face: time },
           { face: punch },
           { face: kick },
+          { face: crossbow },
           { face: backward },
           { face: time, damage: '3' },
         ],
       },
       {
-        titleIcon: 'imparable.png',
         name: 'SPECIAL #1',
         description: 'Special #1 descripción',
         dices: [
@@ -140,7 +140,6 @@ const timeTravelGirl = {
         ],
       },
       {
-        titleIcon: 'imparable.png',
         name: 'SPECIAL #2',
         description: 'Special #2 descripción',
         dices: [
@@ -152,7 +151,6 @@ const timeTravelGirl = {
         ],
       },
       {
-        titleIcon: 'imparable.png',
         name: 'SPECIAL #3',
         description: 'Special #3 descripción',
         dices: [

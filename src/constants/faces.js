@@ -13,6 +13,6 @@ export const crossbow = { name: 'crossbow', icon: 'crossbow' }
 
 export const eyeRay = { name: 'eyeRay', icon: 'eye-ray' }
 export const punoAmericano = { name: 'punoAmericano', icon: 'puno-americano' }
-export const errorSystem = { name: 'errorSystem', icon: 'error-system' }
+export const errorSystem = { name: 'errorSystem', icon: 'system-error' }
 export const doubleDefense = { name: 'doubleDefense', icon: 'double-defense' }
 export const superSpeed = { name: 'suprSpeed', icon: 'super-speed' }
