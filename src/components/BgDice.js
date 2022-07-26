@@ -2,12 +2,13 @@ import { Card, Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 
-const BgDice = ({ face, damage }) => {
+const BgDice = ({ face, damage, width = '100%', gridArea = '' }) => {
   return (
     <Box
       sx={{
-        width: '100%',
+        width,
         position: 'relative',
+        gridArea,
         '&::after': {
           content: '""',
           display: 'block',

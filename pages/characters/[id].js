@@ -1,8 +1,9 @@
-import { Box, Button, Card, Stack, Typography } from '@mui/material'
+import { Box, Button, Card, Divider, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import BgAttack from '../../src/components/BgAttack.js'
+import BgDefense from '../../src/components/BgDefense.js'
 import BgDice from '../../src/components/BgDice.js'
 import { characters } from '../../src/constants/characters/characters.js'
 
@@ -125,19 +126,44 @@ const Character = () => {
                 </Box>
               ))}
             </Stack>
+
             <Box display="flex" justifyContent="center">
-              <Stack
-                width="90%"
-                direction="column"
-                spacing={4}
-                justifyContent="center"
-                alignItems="center"
-              >
-                {character.attacks[attackType].map((attack) => (
-                  <BgAttack key={attack.name} attack={attack} />
-                ))}
-                <Box height="50px" />
-              </Stack>
+              {attackType !== 'defenses' && (
+                <Stack
+                  width="90%"
+                  direction="column"
+                  spacing={4}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {character.attacks[attackType].map((attack) => (
+                    <BgAttack key={attack.name} attack={attack} />
+                  ))}
+                  <Box height="50px" />
+                </Stack>
+              )}
+              {attackType === 'defenses' && (
+                <Stack
+                  width="90%"
+                  direction="column"
+                  spacing={4}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {character.attacks[attackType].map(
+                    ({ name, description, value, required, backToHand }) => (
+                      <BgDefense
+                        name={name}
+                        description={description}
+                        value={value}
+                        required={required}
+                        backToHand={backToHand}
+                      />
+                    )
+                  )}
+                  <Box height="50px" />
+                </Stack>
+              )}
             </Box>
           </Stack>
         </Stack>
